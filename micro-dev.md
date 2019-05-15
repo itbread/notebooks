@@ -1,8 +1,4 @@
 
-go get github.com/go-chi/chi  
-go get github.com/rs/cors  
-go get github.com/go-chi/render  
-
 # 下载代码  
 + go get --insecure git.kaifakuai.com/driving_school/auth_service  
 + go get --insecure git.kaifakuai.com/driving_school/device_api  
