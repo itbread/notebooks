@@ -21,6 +21,9 @@ go get github.com/micro/go-micro
 + go get -u -v github.com/micro/protoc-gen-micro
 
 # 修改配置  (注意：服务都需要在本机运行)
+因相关服务没有正式部署，本地运行服务提供测试环境。
+默认情况下下面配置文件不要修改，192.168.0.126是 192.168.0.101 上的虚拟服务器。
+
 auth_service configs/config.json配置
 ```
 {
@@ -53,6 +56,10 @@ user_api configs/config.json 配置
 }
 ```
 
+```
+dsm_portal 中 user_service 写死了一个地址，需要改成 你自己的ip
+```
+
 #  consul 服务
 ## 下载
 ```bash
@@ -80,9 +87,20 @@ consul agent -server  -bootstrap-expect 1 -bind=192.168.0.11 -client=0.0.0.0 -da
 
 ### 方式二 micro 指定 consul
 +  MICRO_REGISTRY=consul micro api --handler=web
++  MICRO_REGISTRY=consul micro web
 +  go run main.go --registry=consul //user_api
 +  go run main.go --registry=consul //auth_service
-+  MICRO_REGISTRY=consul micro web
+
+或者 在系统环境变量(/etc/profile  或者  ~/.bashrc )最后位置添加，注意： /etc/profile 中修改，需要重启电脑生效
+``` bash
+export MICRO_REGISTRY=consul
+```
+
+上面运行参数可以简化如下：
++  micro api --handler=web
++  micro web
++  go run main.go  //user_api
++  go run main.go  //auth_service
 
 
 
