@@ -5,20 +5,25 @@ go get github.com/rs/cors
 go get github.com/go-chi/render  
 
 # 下载代码  
-+ go get --insecure git.kaifakuai.com/driving_school/auth_service  
-+ go get --insecure git.kaifakuai.com/driving_school/device_api  
-+ go get --insecure git.kaifakuai.com/driving_school/dsm_portal  
-+ go get --insecure git.kaifakuai.com/driving_school/file_server  
-+ go get --insecure git.kaifakuai.com/driving_school/goseaweedfs  
-+ go get --insecure git.kaifakuai.com/driving_school/user_api  
-+ go get --insecure git.kaifakuai.com/driving_school/docs
-
+``` bash
+ go get --insecure git.kaifakuai.com/driving_school/auth_service  
+ go get --insecure git.kaifakuai.com/driving_school/device_api  
+ go get --insecure git.kaifakuai.com/driving_school/dsm_portal  
+ go get --insecure git.kaifakuai.com/driving_school/file_server  
+ go get --insecure git.kaifakuai.com/driving_school/goseaweedfs  
+ go get --insecure git.kaifakuai.com/driving_school/user_api  
+ go get --insecure git.kaifakuai.com/driving_school/docs
+```
 # 安装go-micro框架  
+``` bash
 go get github.com/micro/go-micro
+```
 
-# 安装 protobuf  
-+ go get -u -v github.com/golang/protobuf/{proto,protoc-gen-go}  
-+ go get -u -v github.com/micro/protoc-gen-micro
+# 安装 protobuf 
+``` 
+  go get -u -v github.com/golang/protobuf/{proto,protoc-gen-go}  
+  go get -u -v github.com/micro/protoc-gen-micro
+```
 
 # 修改配置  (注意：服务都需要在本机运行)
 因相关服务没有正式部署，本地运行服务提供测试环境。
@@ -79,17 +84,23 @@ consul agent -server  -bootstrap-expect 1 -bind=192.168.0.11 -client=0.0.0.0 -da
 
 
 ### 方式一 micro 新版本默认 mdns（测试版本为 v1.1.1）
-+ micro api --handler=web
-+ micro web
-+ go run main.go  //user_api
-+ go run main.go  //auth_service
+``` bash
+ micro api --handler=web
+ micro web
+ go run main.go  //user_api
+ go run main.go  //device_api
+ go run main.go  //auth_service
+```
 
 
 ### 方式二 micro 指定 consul
-+  MICRO_REGISTRY=consul micro api --handler=web
-+  MICRO_REGISTRY=consul micro web
-+  go run main.go --registry=consul //user_api
-+  go run main.go --registry=consul //auth_service
+```
+  MICRO_REGISTRY=consul micro api --handler=web
+  MICRO_REGISTRY=consul micro web
+  go run main.go --registry=consul //user_api
+  go run main.go --registry=consul //device_api
+  go run main.go --registry=consul //auth_service
+```
 
 或者 在系统环境变量(/etc/profile  或者  ~/.bashrc )最后位置添加，注意： /etc/profile 中修改，需要重启电脑生效
 ``` bash
@@ -97,10 +108,13 @@ export MICRO_REGISTRY=consul
 ```
 
 上面运行参数可以简化如下：
-+  micro api --handler=web
-+  micro web
-+  go run main.go  //user_api
-+  go run main.go  //auth_service
+```
+  micro api --handler=web
+  micro web
+  go run main.go  //user_api
+  go run main.go  //device_api
+  go run main.go  //auth_service
+```
 
 
 
