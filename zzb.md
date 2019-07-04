@@ -1,7 +1,5 @@
-#   github  gitlab  pull push 免密码登录 处理办法
-+  vi  ～/.git-credentials
-+  输入：https://{username}：{password}@github.com
-+ 保存退出后执行:git config --global credential.helper store
+#  zzb 小程序 环境搭建
+
 
 
 ```  bash
