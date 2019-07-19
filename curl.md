@@ -17,7 +17,7 @@ curl -XPOST -H"content-type:application/json" http://192.168.0.138:8080/user/pro
 ## curl  delete 
 
 ```
-curl  -DELETE http://192.168.0.138:8080/user/42391e6f-1ce9-49c0-8f2b-77edbe25e679
+curl  -XDELETE http://192.168.0.138:8080/user/42391e6f-1ce9-49c0-8f2b-77edbe25e679
 
 ``` 
 
