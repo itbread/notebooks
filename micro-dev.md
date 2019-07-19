@@ -12,7 +12,7 @@
 ```
 # 安装go-micro框架  
 ``` bash
-go get github.com/micro/go-micro
+go get -u github.com/micro/go-micro
 ```
 
 # 安装 protobuf 
