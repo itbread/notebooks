@@ -20,22 +20,24 @@ curl  http://192.168.0.101:8080/school/region/city/440100
 //单个场地
 curl  http://192.168.0.101:8080/school/place/p001
 //市--区--场地
-curl  http://192.168.0.101:8080/school/places/city
+curl  http://192.168.0.101:8080/school/place/city
 //市--区--场地
-curl  http://192.168.0.101:8080/school/places/city/440100
+curl  http://192.168.0.101:8080/school/place/city/440100
 //区--场地
-curl  http://192.168.0.101:8080/school/places/zone/440100
+curl  http://192.168.0.101:8080/school/place/zone/440106
 //省--市--区--场地
-curl  http://192.168.0.101:8080/school/places/levels
+curl  http://192.168.0.101:8080/school/place/levels
 
 //单个省--市--区--场地
-curl  http://192.168.0.101:8080/school/places/province/440000
+curl  http://192.168.0.101:8080/school/place/province/440000
 
 ```
 ### 创建Places
 ```
-curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/school/place/create -d '{"place_id": "p002",    "school_id": "p001",	"province": "440000","city": "440100","zone": "440106", "school_name": "嘉禾望岗驾校2"	}'
+curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/school/place/create -d '{"place_id": "p002",    "school_id": "s001",	"province": "440000","city": "440100","zone": "440106", "school_name": "嘉禾望岗驾校2"	}'
 ```
+
+curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/school/place/create -d '{"place_id": "p003",    "school_id": "s001",	"province": "440000","city": "440100","zone": "440106", "place_name": "嘉禾望岗场地3"	}'
 
 ### 根据驾校编号获取旗下的场地
 ```
