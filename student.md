@@ -1,6 +1,7 @@
 
 #启动 consul
 consul agent -server  -bootstrap-expect 1 -bind=192.168.0.11 -client=0.0.0.0 -data-dir=data -node=node3 -join 192.168.0.101
+consul agent -server  -bind=192.168.0.11 -client=0.0.0.0 -data-dir=data -node=node3 -join 192.168.0.101
 
 运行cosnul agent以server模式，
 
@@ -23,7 +24,7 @@ curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/user/wei
 ```
 ### 注册
 ```
-curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/user/student/register -d '{"openid":"wx22345","phone":"13880789999"}'
+curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/user/student/register -d '{"openid":"wx22345","phone":"18670786695"}'
 
 {"code":0,"msg":"Success","sub_code":0,"sub_msg":"Success","data":{"uid":12}}
 ```
@@ -32,7 +33,7 @@ curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/user/stu
 
 ### 登录
 ```
-curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/user/student/login -d '{"openid":"wx12345","phone":"18670789999"}'
+curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/user/student/login -d '{"openid":"wx22245","phone":"18670786695"}'
 
 {"code":0,"msg":"Success","sub_code":0,"sub_msg":"Success","data":{"uid":12}}
 ```
@@ -128,4 +129,8 @@ curl http://192.168.0.101:8080/user/status/5
 curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/user/status/update -d '{"uid":5,"order":0,"base_info":0,"pay":0,"sign":0,"submit":0,"photo":0,"high_meter":0,"item1":0,"item2":0,"item3":0,"item4":0,"pwd":0}'
 
 {"code":0,"msg":"Success","sub_code":0,"sub_msg":"Success"}
+
 ```
+
+api 
+http://api.ngrok.kaifakuai.net

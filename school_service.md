@@ -1,7 +1,10 @@
 
 #启动 consul
 consul agent -server  -bootstrap-expect 1 -bind=192.168.0.11 -client=0.0.0.0 -data-dir=data -node=node3 -join 192.168.0.101
+consul agent -server  -bind=192.168.0.11 -client=0.0.0.0 -data-dir=data -node=node3 -join 192.168.0.101
 
+api 网址 
+http://api.ngrok.kaifakuai.net/school/region/440100
 
 ## 获取region 信息
 ### 根据市编号 获取其下的region信息 （层级显示）
@@ -59,6 +62,11 @@ curl  http://192.168.0.101:8080/school/place/province/440000
 curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/school/place/create -d '{"place_id": "p002",    "school_id": "s001",	"province": "440000","city": "440100","zone": "440106", "place_name": "嘉禾望岗场地2"	}'
 
 {"code":0,"msg":"Success","sub_code":0,"sub_msg":"Success","data":{"place_id":"p002","school_id":"s001","pic_id":"","longitude":0,"latitude":0,"place_name":"嘉禾望岗场地2","manager":"","phone":"","brief":"","area":0,"contains_vehicles":0,"open_time":"","remark":""}}
+```
+
+### 更新places
+```
+curl -XPOST -H"content-type:application/json" http://192.168.0.101:8080/school/place/create -d '{"place_id":"p002","school_id":"s001","pic_id":"pci.jpg","longitude":10,"latitude":9,"place_name":"嘉禾望岗场地","manager":"张三","phone":"133456789","brief":"广州白云区嘉禾望岗场地","area":3000,"contains_vehicles":100,"open_time":"09:00~22:00","remark":"白云区嘉禾望岗场地"}'
 ```
 
 ### 根据驾校编号获取旗下的场地
