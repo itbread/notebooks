@@ -13,13 +13,13 @@ git tag -a v1.4 -m 'my version 1.4'
 git fetch --tags
 ```
 
-### 查询本地 tag 信息
+### 列显已有的标签
 
 ```
 git tag
 ```
 
-### 查询本地 指定 tag 信息
+### 查看相应标签的版本信息，并连同显示打标签时的提交对象
 
 ```
 git show tag
