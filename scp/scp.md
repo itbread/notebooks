@@ -17,3 +17,15 @@ scp root@192.168.0.101:/opt/zzb/"{*_service,*_portal,thirdparty}"   /home/ycg/
 ```bash
 scp -r root@192.168.0.101:/opt/zzb/   /home/ycg/
 ```
+
+## SecureCRT xshell 下的文件传输协议有以下几种：ASCII、Xmodem、Ymodem、Zmodem
+
+### 系统上需要安装 lrzsz
+
+```bash
+centos
+yum -y install lrzsz
+
+ubuntu
+apt-get install lrzsz
+```
