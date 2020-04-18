@@ -9,6 +9,7 @@ drop database zzb_db;
 create user zzb_db superuser password '123456';
 create database zzb_db owner zzb_db; 
 grant all on database zzb_db to zzb_db;
+## 还原数据库
 /Library/PostgreSQL/12/bin/psql -h 127.0.0.1 -U postgres -d zzb_db < ~/Desktop/zzb_db_20200313.bak
 
 
