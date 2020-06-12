@@ -44,3 +44,6 @@ UPDATE tb_clue_info set leads_create_dt=EXTRACT(epoch FROM CAST(leads_create_tim
 
 --根据字符串 更新时间戳(转换带时区，如果不带时区时间将会相差 8 个小时)
 UPDATE tb_clue_info set leads_create_dt=EXTRACT(epoch FROM CAST(leads_create_time AS TIMESTAMP with time zone)) ;
+
+-- 重复订单中，只查询一条
+SELECT DISTINCT ON (uid) uid, order_id FROM tb_order WHERE (tb_order.status=4 ) ORDER BY uid, order_id DESC;
