@@ -1,10 +1,18 @@
 # psql 连接数据库
 
-psql -U auth_db -h 192.168.0.126 -p 19999
+psql -U auth_db -h 127.0.0.1 -p 19999
 
 ## 备份数据库
 
-pg_dump -h 192.168.0.68 -p 5432 -U postgres -x -s -f zzb_db.sql zzb_db
+pg_dump -h 127.0.0.1 -p 5432 -U postgres -f zzb_db.sql zzb_db
+
+### 备份表
+
+pg_dump -h 127.0.0.1 -p 5432 -U zzb_db -t tp_tmp -f tp_tmp.sql zzb_db
+
+### 还原表
+
+psql -h 127.0.0.1 -p 5432 -U zzb_db -f tp_tmp.sql zzb_db
 
 ## 删除数据库、创建用户、授权
 
@@ -47,3 +55,9 @@ UPDATE tb_clue_info set leads_create_dt=EXTRACT(epoch FROM CAST(leads_create_tim
 
 -- 重复订单中，只查询一条
 SELECT DISTINCT ON (uid) uid, order_id FROM tb_order WHERE (tb_order.status=4 ) ORDER BY uid, order_id DESC;
+
+--更新学员投诉记录
+update tb_student SET count=num
+from
+(SELECT student_id, count(student_id) num from tb_record  
+GROUP BY student_id) b WHERE tb_student.uid=b.student_id;
