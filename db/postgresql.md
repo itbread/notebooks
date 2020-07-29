@@ -5,6 +5,7 @@ psql -U auth_db -h 127.0.0.1 -p 19999
 ## 备份数据库
 
 pg_dump -h 127.0.0.1 -p 5432 -U postgres -f zzb_db.sql zzb_db
+pg_dump -h 47.106.147.83 -p 5432 -U postgres -f auth_db.sql auth_db
 
 ### 备份表
 
@@ -61,3 +62,33 @@ update tb_student SET count=num
 from
 (SELECT student_id, count(student_id) num from tb_record  
 GROUP BY student_id) b WHERE tb_student.uid=b.student_id;
+
+--查询学员考试情况（多行转多列）
+select tb_student.uid,tb_student.name,tb.\* from tb_student
+LEFT JOIN
+(
+select suid ,
+max(case when km=1 and exam_type =1 then exam_result else 0 end) as km1_1,
+max(case when km=1 and exam_type =2 then exam_result else 0 end) as km1_2,
+max(case when km=1 and exam_type =3 then exam_result else 0 end) as km1_3,
+max(case when km=1 and exam_type =4 then exam_result else 0 end) as km1_4,
+max(case when km=1 and exam_type =5 then exam_result else 0 end) as km1_5,
+max(case when km=2 and exam_type =1 then exam_result else 0 end) as km2_1,
+max(case when km=2 and exam_type =2 then exam_result else 0 end) as km2_2,
+max(case when km=2 and exam_type =3 then exam_result else 0 end) as km2_3,
+max(case when km=2 and exam_type =4 then exam_result else 0 end) as km2_4,
+max(case when km=2 and exam_type =5 then exam_result else 0 end) as km2_5,
+max(case when km=3 and exam_type =1 then exam_result else 0 end) as km3_1,
+max(case when km=3 and exam_type =2 then exam_result else 0 end) as km3_2,
+max(case when km=3 and exam_type =3 then exam_result else 0 end) as km3_3,
+max(case when km=3 and exam_type =4 then exam_result else 0 end) as km3_4,
+max(case when km=3 and exam_type =5 then exam_result else 0 end) as km3_5,
+max(case when km=4 and exam_type =1 then exam_result else 0 end) as km4_1,
+max(case when km=4 and exam_type =2 then exam_result else 0 end) as km4_2,
+max(case when km=4 and exam_type =3 then exam_result else 0 end) as km4_3,
+max(case when km=4 and exam_type =4 then exam_result else 0 end) as km4_4,
+max(case when km=4 and exam_type =5 then exam_result else 0 end) as km4_5
+from tb_exam_record
+group by suid
+order by suid asc
+) tb on tb.suid=tb_student.uid
