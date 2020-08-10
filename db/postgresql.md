@@ -92,3 +92,10 @@ from tb_exam_record
 group by suid
 order by suid asc
 ) tb on tb.suid=tb_student.uid
+
+外键定制三种约束模式
+　　 restrict 和 no action:父表更新或者删除时，子表有匹配记录，则禁止父表的更新和删除。默认选项
+
+cascade：父表更新或者删除时，子表有匹配记录，则父表操作成功，同时更新或删除子表匹配项
+
+set null：父表更新或者删除时，子表有匹配记录，则父表操作成功，同时将子表的匹配项设置为 null 值(前提能设置为 null)
