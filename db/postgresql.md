@@ -36,6 +36,16 @@ create user auth_db superuser password '123456';
 create database auth_db owner auth_db;
 grant all on database auth_db to auth_db;
 
+drop database bds_db;
+create user bds_db superuser password '123456';
+create database bds_db owner bds_db;
+grant all on database bds_db to bds_db;
+drop database bds_db;
+
+create user zmp_db superuser password '123456';
+create database zmp_db owner zmp_db;
+grant all on database zmp_db to zmp_db;
+
 ## 字符串转时间戳
 
 --日期转时间戳
