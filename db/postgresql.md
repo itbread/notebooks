@@ -1,3 +1,12 @@
+Linux 环境下修改 postgres 密码
+
+```bash
+su  postgres
+-bash-3.2$ psql -U postgres
+postgres=#alter user postgres with password 'new password';
+postgres=#\q
+```
+
 # psql 连接数据库
 
 psql -U auth_db -h 127.0.0.1 -p 19999

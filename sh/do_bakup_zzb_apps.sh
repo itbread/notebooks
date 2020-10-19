@@ -16,28 +16,18 @@ do_backup_apps() {
     echo "start zip zzb apps files"
 
     zip -r $zipfile \
-        "/opt/zzb/booking_service" \
-        "/opt/zzb/cms_service" \
-        "/opt/zzb/coach_service" \
-        "/opt/zzb/device_service" \
-        "/opt/zzb/extend_service" \
-        "/opt/zzb/file_service" \
-        "/opt/zzb/market_service" \
-        "/opt/zzb/school_service" \
-        "/opt/zzb/thirdparty" \
-        "/opt/zzb/trade_service" \
-        "/opt/zzb/user_service" \
-        "/opt/zzb/bds_portal" \
-        "/opt/zzb/device_portal" \
-        "/opt/zzb/emp_portal" \
-        "/opt/zzb/gmp_portal" \
-        "/opt/zzb/stu_mp_portal" \
-        "/opt/zzb/oms_mp_portal" \
-        "/opt/zzb/zmp_portal" \
-        "/opt/iot/api_gateway" \
-        "/opt/iot/jtt808"
+        "/opt/zzb" \
+        "/opt/iot"
 
     echo "finish zip zzb apps files"
+}
+
+do_backup_db() {
+    echo "start backup database zzb_db ..."
+    echo "please input db password "
+    pg_dump -h $db_service -p $db_port -U $db_user_name -f $backupfile $db_name
+
+    echo "finish backup database zzb_db"
 }
 
 #判读参数并执行
