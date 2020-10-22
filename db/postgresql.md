@@ -49,8 +49,8 @@ drop database bds_db;
 create user bds_db superuser password '123456';
 create database bds_db owner bds_db;
 grant all on database bds_db to bds_db;
-drop database bds_db;
 
+drop database zmp_db;
 create user zmp_db superuser password '123456';
 create database zmp_db owner zmp_db;
 grant all on database zmp_db to zmp_db;
@@ -118,3 +118,29 @@ order by suid asc
 cascade：父表更新或者删除时，子表有匹配记录，则父表操作成功，同时更新或删除子表匹配项
 
 set null：父表更新或者删除时，子表有匹配记录，则父表操作成功，同时将子表的匹配项设置为 null 值(前提能设置为 null)
+
+### 解决 PostgreSQL: IDENT authentication failed for user postgres
+
+#### 通过修改 pg_hda.conf 可以解决. 参考链接 Ref: http://www.postgresql.org/docs/8.1/interactive/client-authentication.html
+
+#### 修改配置 vim /var/lib/pgsql/11/data/pg_hba.conf
+
+```conf
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             0.0.0.0/0            md5
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     peer
+host    replication     all             127.0.0.1/32            ident
+host    replication     all             ::1/128                 ident
+# 添加这一行到最后
+host    all             all             0.0.0.0/0            md5
+
+```
