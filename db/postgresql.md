@@ -55,6 +55,10 @@ create user zmp_db superuser password '123456';
 create database zmp_db owner zmp_db;
 grant all on database zmp_db to zmp_db;
 
+## 根据另外一个表更新另外一个表
+
+update tb_status set item1=tb_status_tmp2.item1 from tb_status_tmp2 where tb_status.uid=tb_status_tmp2.uid;
+
 ## 字符串转时间戳
 
 --日期转时间戳
