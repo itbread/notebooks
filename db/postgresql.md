@@ -57,7 +57,11 @@ grant all on database zmp_db to zmp_db;
 
 ## 根据另外一个表更新另外一个表
 
-update tb_status set item1=tb_status_tmp2.item1 from tb_status_tmp2 where tb_status.uid=tb_status_tmp2.uid;
+update tb_status set item1=tb_status_tmp.item1 from tb_status_tmp where tb_status.uid=tb_status_tmp.uid;
+
+## 从 tb_status 中拷贝数据并新建表 tb_status_tmp
+
+SELECT \* INTO tb_status_tmp FROM tb_status;
 
 ## 字符串转时间戳
 
