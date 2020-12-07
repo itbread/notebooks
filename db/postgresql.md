@@ -14,6 +14,7 @@ psql -U auth_db -h 127.0.0.1 -p 19999
 ## 备份数据库
 
 pg_dump -h 127.0.0.1 -p 5432 -U postgres -f zzb_db.sql zzb_db
+pg_dump -h 127.0.0.1 -p 5432 -U postgres -f auth_db.sql auth_db
 pg_dump -h 47.106.147.83 -p 5432 -U postgres -f auth_db.sql auth_db
 
 ### 备份表

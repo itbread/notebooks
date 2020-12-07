@@ -37,3 +37,9 @@ git push --tags
 
 git fetch origin tag <tagname>
 ```
+
+### git 免密码登录
+
+```
+
+```
