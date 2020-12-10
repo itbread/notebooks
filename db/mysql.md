@@ -71,3 +71,21 @@ bind-address            = 0.0.0.0
  grant all privileges on *.* to 'root'@'%' identified by '123456' with grant option;
  FLUSH PRIVILEGES; 
 ```
+
+
+##  定时任务
+``` sql
+-- 查看是否开启 定时任务
+ show variables like '%event_scheduler%';
+--设置 开启定时任务
+ SET GLOBAL event_scheduler = ON;
+-- 查询定时任务 
+SELECT * FROM information_schema.EVENTS;
+```
+
+### 每天21:40 删除 db_user_info的例子
+``` sql
+CREATE DEFINER=`root`@`localhost` EVENT `del_event` 
+ON SCHEDULE EVERY 1 DAY STARTS '2020-12-10 21:40:00' 
+ON COMPLETION PRESERVE ENABLE DO delete  FROM db_user_info 
+```
