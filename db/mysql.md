@@ -1,12 +1,14 @@
-# Ubuntu 安装MySQL 5.7.26
+# Ubuntu 安装 MySQL 5.7.26
 
-#  安装mysql
-``` bash
+# 安装 mysql
+
+```bash
 sudo apt-get install mysql-server
 ```
 
 # 安装配置
-``` bash
+
+```bash
 sudo mysql_secure_installation
 
 #1
@@ -40,24 +42,31 @@ Reloading the privilege tables will ensure that all changes
 made so far will take effect immediately.
 Reload privilege tables now? (Press y|Y for Yes, any other key for No) : Y (我的选项)
 ```
+
 # mysql -udebian-sys-maint -p
+
 ```
-Enter password: 
+Enter password:
 ...
 mysql>
 ```
 
-#    检查mysql服务状态
-``` bash
+# 检查 mysql 服务状态
+
+```bash
 systemctl status mysql.service
 ```
 
 # 修改密码
-``` sql
+
+```sql
 UPDATE mysql.user SET authentication_string=PASSWORD('123456'), PLUGIN='mysql_native_password' WHERE USER='root';
+或者
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '12345678';
 ```
 
-#   修改允许远程登录
+# 修改允许远程登录
+
 ```
 vim /etc/mysql/mysql.conf.d/mysqld.cnf
 找到
@@ -67,7 +76,8 @@ bind-address            = 127.0.0.1
 或者
 bind-address            = 0.0.0.0
 ```
-``` sql
+
+```sql
  grant all privileges on *.* to 'root'@'%' identified by '123456' with grant option;
- FLUSH PRIVILEGES; 
+ FLUSH PRIVILEGES;
 ```
