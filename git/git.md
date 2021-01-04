@@ -38,10 +38,12 @@ git push --tags
 git fetch origin tag <tagname>
 ```
 
-### git 免密码登录
+### git 重新指定 服务器地址
 
 ```
+git remote set-url origin git.kaifakuai.com
 
+验证是否替换成功进入项目下的.git目录，找到config文件，打开查看url是否更改.
 ```
 
 ### 一、开发分支（dev）上的代码达到上线的标准后，要合并到 master 分支
