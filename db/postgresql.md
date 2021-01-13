@@ -1,3 +1,9 @@
+## centos 启动 postgresql 服务
+
+```bash
+systemctl start  postgresql-11.service
+```
+
 Linux 环境下修改 postgres 密码
 
 ```bash
