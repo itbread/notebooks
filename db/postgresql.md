@@ -62,6 +62,12 @@ create user zmp_db superuser password '123456';
 create database zmp_db owner zmp_db;
 grant all on database zmp_db to zmp_db;
 
+## 创建自增表
+
+```sql
+CREATE TABLE "tb_yy_login_relation" ("login_id" bigserial,"yy_id" int , PRIMARY KEY ("login_id"))
+```
+
 ## 根据另外一个表更新另外一个表
 
 update tb_status set item1=tb_status_tmp.item1 from tb_status_tmp where tb_status.uid=tb_status_tmp.uid;
