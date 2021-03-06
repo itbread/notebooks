@@ -21,7 +21,7 @@ psql -U auth_db -h 127.0.0.1 -p 19999
 
 pg_dump -h 127.0.0.1 -p 5432 -U postgres -f zzb_db.sql zzb_db
 pg_dump -h 127.0.0.1 -p 5432 -U postgres -f auth_db.sql auth_db
-pg_dump -h 47.106.147.83 -p 5432 -U postgres -f auth_db.sql auth_db
+pg_dump -h 47.106.147.83 -p 5432 -U auth_db -f auth_db.sql auth_db
 
 ### 备份表
 
@@ -40,7 +40,8 @@ grant all on database zzb_db to zzb_db;
 
 ## 还原数据库
 
-/Library/PostgreSQL/12/bin/psql -h 127.0.0.1 -U postgres -d zzb_db < ~/Desktop/zzb_db_20200313.bak
+psql -h 127.0.0.1 -U postgres -d zzb_db < ~/Desktop/zzb_db_20200313.bak
+psql -h 127.0.0.1 -U auth_db -d auth_db < auth_db.sql
 
 drop database zzb_db;
 create user zzb_db superuser password '123456';
