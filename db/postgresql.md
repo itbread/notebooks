@@ -40,7 +40,7 @@ grant all on database zzb_db to zzb_db;
 
 ## 还原数据库
 
-psql -h 127.0.0.1 -U postgres -d zzb_db < ~/Desktop/zzb_db_20200313.bak
+psql -h 127.0.0.1 -U zzb_db -d zzb_db < ~/Desktop/zzb_db_20200313.bak
 psql -h 127.0.0.1 -U auth_db -d auth_db < auth_db.sql
 
 drop database zzb_db;
